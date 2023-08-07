@@ -17,10 +17,8 @@ public class Cliente {
         return null;
     }
     public boolean equals(Cliente clienteComparado){
-        if(this.cpf.equals(cpf)){
-            return true;}
 
-        return false;
+        return this.cpf.equals(cpf);
     }
 
 }

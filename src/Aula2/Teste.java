@@ -9,7 +9,7 @@ public class Teste {
         boolean fechar =  false;
         int escolhaMenu;
 
-        while (fechar != true) {
+        while (!fechar) {
              System.out.println("\n===== MENU =====");
              System.out.println("1 - Criar contas");
              System.out.println("2 - Mostrar contas");
