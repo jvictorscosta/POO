@@ -4,13 +4,13 @@ public class Cliente {
     private int identificacao;
     private String nome;
     private String endereco;
-    private int contador= 0;
 
 
-    public Cliente( String nome, String endereco) {
-        this.identificacao = contador+1;
+
+    public Cliente( String nome, String endereco, int id) {
+        this.identificacao = id;
         this.nome = nome;
         this.endereco = endereco;
-        contador++;
+
     }
 }

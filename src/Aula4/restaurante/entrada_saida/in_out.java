@@ -1,5 +1,7 @@
 package Aula4.restaurante.entrada_saida;
 
+import Aula4.restaurante.domain.Prato;
+import Aula4.restaurante.domain.Restaurante;
 import Aula4.restaurante.repository.RepositoryRestaurante;
 import Aula4.restaurante.service.ClienteService;
 import Aula4.restaurante.service.RestauranteService;
@@ -9,6 +11,7 @@ import java.util.Scanner;
 public class in_out {
     private ClienteService clienteService;
     private RestauranteService restauranteService;
+
 
     Scanner scanner = new Scanner(System.in);
 
@@ -35,6 +38,7 @@ public class in_out {
                 System.out.println("3. Cadastrar Cliente");
                 System.out.println("4. Verificar historico de pedidos");
                 System.out.println("5. Lista de pratos");
+                System.out.println("6. Criar restaurante");
                 System.out.println("0. Sair");
 
 
@@ -61,7 +65,12 @@ public class in_out {
                 } else if (opcao ==3){
                     criarCliente();
                 } else if (opcao ==5){
-                    restauranteService.listarPratosRestaurante();
+                    System.out.println("De qual restaurante queres listar os pratos?");
+                    String restauntePesquisado = scanner.nextLine();
+                    restauranteService.listarPratosRestaurante(restauntePesquisado);
+                } else if (opcao ==6){
+                    criarRestaurante();
+
                 }else if (opcao == 0) {
                     break;
                 } else {
@@ -83,9 +92,18 @@ public class in_out {
             System.out.print("digite a descrição do prato: ");
             scanner.nextLine();
             String descricaoPrato = scanner.nextLine();
-            restauranteService.criarPratoService(nomePrato,precoPrato,descricaoPrato);
+            Prato pratoCriado= restauranteService.criarPratoService(nomePrato,precoPrato,descricaoPrato);
             System.out.println("");
             System.out.println("Em qual restaurante deseja adicionar este prato?: ");
+            restauranteService.listarRestaurante();
+            String restauranteProcurado = scanner.nextLine();
+            Restaurante restauranteSelicionado = restauranteService.buscarRestauranteNome(restauranteProcurado);
+
+            restauranteService.adicionarPratoRestaurante(restauranteSelicionado,pratoCriado);
+
+
+
+
 
 
         }
@@ -98,8 +116,17 @@ public class in_out {
             String  enderecoCliente= scanner.nextLine();
 
             clienteService.cadastrarCliente(nomeCliente,enderecoCliente);
-
-
         }
+    public void criarRestaurante(){
+        scanner.nextLine();
+
+        System.out.print("Para cadastra um novo restaurante digite um nome: ");
+        String nomeRestaurante= scanner.nextLine();
+        System.out.print("Digite seu endereço: ");
+        String  enderecoRestaurante= scanner.nextLine();
+
+        restauranteService.criarRestaurante(nomeRestaurante,enderecoRestaurante);
+    }
+
     }
 

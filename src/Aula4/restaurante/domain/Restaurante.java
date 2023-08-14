@@ -6,12 +6,12 @@ import java.util.List;
 public class Restaurante {
     private String nome;
     private String endereço;
-    private ArrayList pratos;
+    private ArrayList<Prato> pratos;
 
     public Restaurante(String nome, String endereço){
         this.nome = nome;
         this.endereço = endereço;
-        this.pratos= new ArrayList<>();
+        this.pratos= new ArrayList<Prato>();
 
     }
 
@@ -27,8 +27,16 @@ public class Restaurante {
         return endereço;
     }
 
+    public ArrayList<Prato> getPratos() {
+        return pratos;
+    }
+
     public void setEndereço(String endereço) {
         this.endereço = endereço;
     }
+    public void addPratoRestaurante(Prato newPrato){
+        this.pratos.add (newPrato);
+
+    };
 
 }
