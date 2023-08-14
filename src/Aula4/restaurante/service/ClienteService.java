@@ -14,6 +14,8 @@ public class ClienteService {
     public void cadastrarCliente(String nome, String endereco){
         Cliente cliente = new Cliente(nome, endereco, contador);
         contador++;
+        repositoryCliente.adicionarCliente(cliente);
     }
+
 
 }
